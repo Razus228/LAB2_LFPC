@@ -10,9 +10,10 @@ class Main:
 
     def __init__(self):
         self.productions = {
-            'S': ['aS','bS','cA'],
-            'A': ['aB',],
-            'B': ['aB','bB','c'],
+            'S': ['aA'],
+            'A': ['bS','bD'],
+            'C': ['bA','a'],
+            'D': ['bC','aD']
         }
         self.start_symbol = 'S'
         self.grammar = Grammars(self.productions, self.start_symbol)
@@ -36,35 +37,37 @@ if __name__ == '__main__':
 
     automaton = {
         'states': {'q0', 'q1', 'q2', 'q3', 'q4', 'q5', 'q6'},
-        'alphabet': {'a', 'b', 'c'},
-        'transition': {
-            'q0': {'a': 'q1', 'b': 'q2', 'c': 'q3'},
-            'q1': {'a': 'q1', 'b': 'q2', 'c': 'q3'},
-            'q2': {'a': 'q4', 'b': 'q5', 'c': 'q6'},
-            'q3': {'a': 'q1', 'b': 'q2', 'c': 'q3'},
-            'q4': {'a': 'q4', 'b': 'q5', 'c': 'q6'},
-            'q5': {'a': 'q4', 'b': 'q5', 'c': 'q6'},
-            'q6': {'a': 'q4', 'b': 'q5', 'c': 'q6'}
-        },
-        'start_state': 'q0',
-        'final_states': {'q1', 'q2', 'q3', 'q4', 'q5', 'q6'}
+    'alphabet': {'a', 'b'},
+    'transition': {
+        'q0': {'a': 'q1'},
+        'q1': {'b': 'q0', 'b': 'q3'},
+        'q2': {'a': 'q4', 'b': 'q5'},
+        'q3': {'b': 'q2', 'a': 'q3'},
+        'q4': {'b': 'q2', 'a': 'q4'},
+        'q5': {'a': 'q6', 'b': 'q1'},
+        'q6': {'a': 'q3', 'b': 'q5'}
+
+    },
+    'start_state': 'q0',
+    'final_states': {'q1', 'q2', 'q3', 'q4', 'q5', 'q6'}
     }
 
     checker = FiniteAutomaton(automaton)
 
-    checker.check_strings(['aab', 'abcbb', 'bac', 'cab', 'ccaabb'])
+    checker.check_strings(['aba', 'ababa', 'aaba', 'abbaba', 'abaaba'])
 
     print(automatons)
 
 automation = Automaton()
 
 automation.states = ['q0', 'q1', 'q2', 'q3']
-automation.alphabet = ['a', 'b', 'c']
-automation.transitions = {('q0', 'a'): ['q0', 'q1'],
-                        ('q1', 'b'): ['q2'],
-                        ('q2', 'a'): ['q2'],
-                        ('q2', 'c'): ['q0'],
-                        ('q2', 'b'): ['q3']}
+automation.alphabet = ['a', 'b']
+automation.transitions = {('q0', 'a'): ['q1'],
+                        ('q1', 'b'): ['q0','q3'],
+                        ('q2', 'a'): ['q4'],
+                        ('q2', 'b'): ['q5'],
+                        ('q3', 'b'): ['q2'],
+                        ('q5', 'b'): ['q1']}
 automation.start_state = 'q0'
 automation.accept_states = ['q3']
 print('')
