@@ -9,11 +9,11 @@ class Automaton:
         self.start_state = 'q0'  # The start state
         self.accept_states = {'q3'}  # Set of accept states
         self.transitions = {
-            ('q0', 'a'): {'q0', 'q1'},
-            ('q1', 'b'): {'q2'},
-            ('q2', 'a'): {'q2'},
-            ('q2', 'c'): {'q0'},
-            ('q2', 'b'): {'q3'}
+            ('q0', 'a'): {'q1'},
+            ('q1', 'b'): {'q0','q2'},
+            ('q2', 'a'): {'q4'},
+            ('q3', 'b'): {'q2'},
+            ('q5', 'b'): {'q1'}
         }  # Dictionary of transition function mappings
 
     def is_deterministic(self):
