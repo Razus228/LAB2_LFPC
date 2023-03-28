@@ -4,8 +4,8 @@ import networkx as nx
 class Automaton:
     def __init__(self):
         # Initializes the attributes of the automaton object
-        self.states = {'q0', 'q1', 'q2', 'q3'}  # Set of states
-        self.alphabet = {'a', 'b', 'c'}  # Set of input symbols
+        self.states = {'q0', 'q1', 'q2', 'q3','q4','q5'}  # Set of states
+        self.alphabet = {'a', 'b'}  # Set of input symbols
         self.start_state = 'q0'  # The start state
         self.accept_states = {'q3'}  # Set of accept states
         self.transitions = {

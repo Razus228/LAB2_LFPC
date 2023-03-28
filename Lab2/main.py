@@ -63,7 +63,7 @@ automation = Automaton()
 automation.states = ['q0', 'q1', 'q2', 'q3']
 automation.alphabet = ['a', 'b']
 automation.transitions = {('q0', 'a'): ['q1'],
-                        ('q1', 'b'): ['q0','q3'],
+                        ('q1', 'b'): ['q3'],
                         ('q2', 'a'): ['q4'],
                         ('q2', 'b'): ['q5'],
                         ('q3', 'b'): ['q2'],
